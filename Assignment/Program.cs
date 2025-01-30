@@ -30,20 +30,56 @@ namespace Assignment
                 return result;
             }
             return [-1];
-        } 
+        }
+        #endregion
+
+        #region Q2
+
+        public static bool CheckPalindrome(int[]? arr , int N)
+        {
+
+            if ( arr is null || N != arr.Length)
+                return false;
+
+            int left = 0;
+            int right = N - 1;
+
+            while (left < right)
+            {
+                if (arr[left] != arr[right])
+                    return false;
+
+                left++;
+                right--;
+            }
+
+            return true;
+        }
+
         #endregion
         static void Main(string[] args)
         {
 
-            #region 1. Given an array consists of numbers with size N and number of queries, in each query you will be given an integer X, and you shouldprint how many numbers in array that is greater than X.
+            #region Q1 - Given an array consists of numbers with size N and number of queries, in each query you will be given an integer X, and you shouldprint how many numbers in array that is greater than X.
             
-            int[] numbers = { 11, 5, 3 };
-            int[] queries = { 1, 5, 13 };
+            //int[] numbers = { 11, 5, 3 };
+            //int[] queries = { 1, 5, 13 };
 
-            int[]? result = BiggerNumbers(numbers, queries);
+            //int[]? result = BiggerNumbers(numbers, queries);
 
-            foreach (int i in result ?? [-1])
-                Console.WriteLine(i); 
+            //foreach (int i in result ?? [-1])
+            //    Console.WriteLine(i);
+
+            #endregion
+
+            #region Q2 - Given a number N and an array of N numbers. Determine if it's palindrome or not.
+
+            int N = 5;
+            int[] array = { 1, 2, 3, 2, 1 };
+
+            bool flag = CheckPalindrome (array, N);
+
+            Console.WriteLine (flag);
 
             #endregion
 
