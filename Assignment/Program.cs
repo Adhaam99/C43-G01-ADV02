@@ -1,4 +1,6 @@
 ﻿
+using System.Xml.Linq;
+
 namespace Assignment
 {
     internal class Program
@@ -150,6 +152,45 @@ namespace Assignment
         }
 
         #endregion
+
+        #region Q5
+
+        public static T[]? RemoveDublicated<T>(T[]? arr)
+        {
+
+            if (arr is null || arr?.Length == 0)
+                return null;
+
+            List<T> list = new List<T>();  
+
+            for (int i = 0; i < arr?.Length; i++)
+            {
+
+                bool dublicated = false;
+
+                for (int j = 0; j < i; j++ )
+                {
+
+                    if (arr[i]?.Equals(arr[j]) ?? false)
+                    {
+                        
+                        dublicated = true;
+                        break;
+                    }
+                }
+
+                if (!dublicated)
+                {
+                    list.Add(arr[i]);
+                }
+
+            }
+
+            return list?.ToArray();
+
+        }
+
+        #endregion
         static void Main(string[] args)
         {
 
@@ -192,11 +233,26 @@ namespace Assignment
 
             #endregion
 
-
             #region Q4 - Given a Stack, implement a function to check if a string of parentheses is balanced using a stack.
 
-            Console.WriteLine(IsBalanced("[()]"));
-            Console.WriteLine(IsBalanced("[()}"));
+            //Console.WriteLine(IsBalanced("[()]"));
+            //Console.WriteLine(IsBalanced("[()}"));
+
+            #endregion
+
+            #region Q5 - Given an array, implement a function to remove duplicate elements from an array.
+
+            int[] array = { 1, 2, 2, 3, 4, 4, 5 };
+
+            int[] newArray = RemoveDublicated<int>(array);
+
+            //foreach ( int i in newArray)
+            //    Console.WriteLine(i);
+
+            for (int i = 0; i < newArray.Length ; i++)
+            {
+                Console.Write($"{newArray[i]} ");
+            }
 
             #endregion
 
