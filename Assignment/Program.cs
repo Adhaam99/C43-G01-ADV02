@@ -108,6 +108,48 @@ namespace Assignment
         }
 
         #endregion
+
+        #region Q4
+
+        static public bool IsBalanced( string? str)
+        {
+
+            if (str == null) return false;
+
+            
+            
+            Stack<char> chars = new Stack<char>();
+
+            for (int i = 0; i < str.Length; i++)
+            {
+
+                if (str[i] == '(' || str[i] == '[' || str[i] == '{')
+                {
+                    chars.Push(str[i]);
+                }
+                else if (str[i] == ')' || str[i] == ']' || str[i] == '}')
+                {
+                    if (chars.Count == 0)
+                        return false;
+                    
+
+                    char top = chars.Pop();
+
+                    if (str[i] == ')' && top != '(' ||
+                        str[i] == ']' && top != '[' ||
+                        str[i] == '}' && top != '{'
+                        ) 
+                        return false;
+
+                    
+                }
+            }
+
+            return chars.Count == 0;
+
+        }
+
+        #endregion
         static void Main(string[] args)
         {
 
@@ -136,26 +178,27 @@ namespace Assignment
 
             #region Q3 - Given a Queue, implement a function to reverse the elements of a queue using a stack.
 
-            Queue<int> queue = new Queue<int>();
-            queue.Enqueue(1);
-            queue.Enqueue(2);
-            queue.Enqueue(3);
+            //Queue<int> queue = new Queue<int>();
+            //queue.Enqueue(1);
+            //queue.Enqueue(2);
+            //queue.Enqueue(3);
 
-            Reverse<int>(queue);
+            //Reverse<int>(queue);
 
-            foreach (int item in queue)
-            {
-                Console.WriteLine(item);
-            }
-
-            //for (int i = 0; i < queue.Count; i++)
+            //foreach (int item in queue)
             //{
-            //    Console.WriteLine(queue.Dequeue());
+            //    Console.WriteLine(item);
             //}
 
             #endregion
 
 
+            #region Q4 - Given a Stack, implement a function to check if a string of parentheses is balanced using a stack.
+
+            Console.WriteLine(IsBalanced("[()]"));
+            Console.WriteLine(IsBalanced("[()}"));
+
+            #endregion
 
         }
     }
