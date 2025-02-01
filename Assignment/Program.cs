@@ -270,15 +270,35 @@ namespace Assignment
 
             #endregion
 
-
             #region Q6 - Given an array list , implement a function to remove all odd numbers from it.
 
-                        List<int> list = [ 1 , 2 , 3 , 4 , 5 , 6];
+            //List<int> list = [ 1 , 2 , 3 , 4 , 5 , 6];
 
-            List<int> evenList = RemoveOddNumbers(list);
+            //List<int> evenList = RemoveOddNumbers(list);
 
-            foreach (int i in evenList)
-                Console.WriteLine(i);
+            //foreach (int i in evenList)
+            //    Console.WriteLine(i);
+
+            #endregion
+
+            #region Q7 - Implement a queue that can hold different data types.
+
+            AnyDataTypeQueue queue = new AnyDataTypeQueue();
+
+            queue.Enqueue(1);
+            queue.Enqueue("Apple");
+            queue.Enqueue(5.25);
+
+            Console.WriteLine(queue.Dequeue());
+
+            Console.WriteLine(queue.Peek());
+
+            Console.WriteLine(queue.Count());
+
+            Console.WriteLine("============================");
+
+            queue.Print();
+
 
             #endregion
         }
