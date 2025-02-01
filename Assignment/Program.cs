@@ -347,7 +347,25 @@ namespace Assignment
             stack.Push(4);
             stack.Push(5);
 
-            Target(stack, 1);
+            int target;
+
+            bool flag = false;
+
+            do
+            {
+
+                Console.Write("Enter your target : ");
+
+                flag = int.TryParse(Console.ReadLine(), out target );
+
+            }while(!flag);
+
+
+            Target(stack, target);
+
+            #endregion
+
+            #region MyRegion
 
             #endregion
         }
