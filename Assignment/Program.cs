@@ -159,7 +159,7 @@ namespace Assignment
         {
 
             if (arr is null || arr?.Length == 0)
-                return null;
+                return Array.Empty<T>();
 
             List<T> list = new List<T>();  
 
@@ -190,6 +190,23 @@ namespace Assignment
 
         }
 
+        #endregion
+
+        #region Q6
+
+        public static List<int> RemoveOddNumbers(List<int> list)
+        {
+            if ( list is null || list.Count == 0)
+                return new List<int>(0);
+
+            for (int i = 0; i < list?.Count; i++)
+            {
+                if (list[i] % 2 != 0 )
+                    list.RemoveAt(i);
+            }
+
+            return list ?? new List<int>(0);
+        }
         #endregion
         static void Main(string[] args)
         {
@@ -242,20 +259,28 @@ namespace Assignment
 
             #region Q5 - Given an array, implement a function to remove duplicate elements from an array.
 
-            int[] array = { 1, 2, 2, 3, 4, 4, 5 };
+            //int[] array = { 1, 2, 2, 3, 4, 4, 5 };
 
-            int[] newArray = RemoveDublicated<int>(array);
+            //int[] newArray = RemoveDublicated<int>(array);
 
-            //foreach ( int i in newArray)
-            //    Console.WriteLine(i);
-
-            for (int i = 0; i < newArray.Length ; i++)
-            {
-                Console.Write($"{newArray[i]} ");
-            }
+            //for (int i = 0; i < newArray?.Length; i++)
+            //{
+            //    Console.Write($"{newArray[i]} ");
+            //}
 
             #endregion
 
+
+            #region Q6 - Given an array list , implement a function to remove all odd numbers from it.
+
+                        List<int> list = [ 1 , 2 , 3 , 4 , 5 , 6];
+
+            List<int> evenList = RemoveOddNumbers(list);
+
+            foreach (int i in evenList)
+                Console.WriteLine(i);
+
+            #endregion
         }
     }
 }
