@@ -208,6 +208,41 @@ namespace Assignment
             return list ?? new List<int>(0);
         }
         #endregion
+
+        #region Q8
+
+        public static void Target(Stack<int> stack , int target)
+        {
+           
+            
+
+            bool found = false;
+
+            int count = 0;
+
+            while (stack?.Count > 0)
+            {
+                int top = stack.Pop();
+
+                if ( top == target)
+                {
+                    found = true;
+                    count++;
+                    break;
+                }
+
+                count++;
+
+            }
+
+            if (found)
+                Console.WriteLine($"Target was found successfully and the count = {count}");
+            else
+                Console.WriteLine("Target was not found");
+
+        }
+
+        #endregion
         static void Main(string[] args)
         {
 
@@ -283,22 +318,36 @@ namespace Assignment
 
             #region Q7 - Implement a queue that can hold different data types.
 
-            AnyDataTypeQueue queue = new AnyDataTypeQueue();
+            //AnyDataTypeQueue queue = new AnyDataTypeQueue();
 
-            queue.Enqueue(1);
-            queue.Enqueue("Apple");
-            queue.Enqueue(5.25);
+            //queue.Enqueue(1);
+            //queue.Enqueue("Apple");
+            //queue.Enqueue(5.25);
 
-            Console.WriteLine(queue.Dequeue());
+            //Console.WriteLine(queue.Dequeue());
 
-            Console.WriteLine(queue.Peek());
+            //Console.WriteLine(queue.Peek());
 
-            Console.WriteLine(queue.Count());
+            //Console.WriteLine(queue.Count());
 
-            Console.WriteLine("============================");
+            //Console.WriteLine("============================");
 
-            queue.Print();
+            //queue.Print();
 
+
+            #endregion
+
+            #region Q8
+
+            Stack<int> stack = new Stack<int>();
+
+            stack.Push(1);
+            stack.Push(2);
+            stack.Push(3);
+            stack.Push(4);
+            stack.Push(5);
+
+            Target(stack, 1);
 
             #endregion
         }
