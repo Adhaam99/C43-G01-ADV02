@@ -1,4 +1,6 @@
 ﻿
+using System.Collections;
+using System.Collections.Generic;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -280,6 +282,42 @@ namespace Assignment
         }
 
         #endregion
+
+        #region Q10
+
+        public static ArrayList FindContiguousSublist(ArrayList nums, int target)
+        {
+
+            if ( nums is null ||  nums.Count == 0 )
+                return new ArrayList();
+
+            for (int i = 0; i < nums.Count; i++)
+            {
+
+                int current = 0;
+
+                for (int j = i; j < nums.Count; j++)
+                {
+
+                    current += (int?)nums[j] ?? 0;
+
+                    if (current == target)
+                    {
+
+                        ArrayList list = new ArrayList();
+                        
+                        for (int k = i; k <= j ; k++)
+                            list.Add(nums[k]);
+
+                        return list;
+                    }
+                }
+            }
+
+            return new ArrayList();
+        }
+
+        #endregion
         static void Main(string[] args)
         {
 
@@ -404,13 +442,24 @@ namespace Assignment
 
             #region Q9 - Given two arrays, find their intersection. Each element in the result should appear as many times as it shows in both arrays.
 
-            int[] arr01 = { 1, 2, 4, 4, 5 };
-            int[] arr02 = { 0, 4, 4 };
+            //int[] arr01 = { 1, 2, 4, 4, 5 };
+            //int[] arr02 = { 0, 4, 4 };
 
-            int[] result = Intersection(arr01, arr02);
+            //int[] result = Intersection(arr01, arr02);
 
-            foreach( int i in result ) 
-                Console.WriteLine(i);
+            //foreach( int i in result ) 
+            //    Console.WriteLine(i);
+
+            #endregion
+
+            #region Q10 - Given an ArrayList of integers and a target sum, find if there is a contiguous sub list that sums up to the target.
+
+            ArrayList list = [1, 2, 3, 7, 5];
+
+            ArrayList result = FindContiguousSublist(list, 12);
+
+            foreach (int item in result)
+                Console.Write($"{item} ");
 
             #endregion
         }
