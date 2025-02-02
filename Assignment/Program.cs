@@ -1,5 +1,6 @@
 ﻿
 using System.Xml.Linq;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Assignment
 {
@@ -243,6 +244,42 @@ namespace Assignment
         }
 
         #endregion
+
+        #region Q9
+
+        public static int[] Intersection( int[] array01, int[] array02 )
+        {
+            Array.Sort(array01);
+            Array.Sort(array02);
+
+            List<int> list = new List<int>();
+
+            int i = 0;
+            int j = 0;
+
+            while (i < array01.Length && j < array02.Length)
+            {
+
+                if (array01[i] == array02[j])
+                {
+                    list.Add(array01[i]);
+                    j++;
+                    i++;
+                }
+                else if (array01[i] < array02[j] )
+                {
+                    i++;
+                }
+                else
+                {
+                    j++;
+                }
+            }
+
+            return list.ToArray();
+        }
+
+        #endregion
         static void Main(string[] args)
         {
 
@@ -339,33 +376,41 @@ namespace Assignment
 
             #region Q8
 
-            Stack<int> stack = new Stack<int>();
+            //Stack<int> stack = new Stack<int>();
 
-            stack.Push(1);
-            stack.Push(2);
-            stack.Push(3);
-            stack.Push(4);
-            stack.Push(5);
+            //stack.Push(1);
+            //stack.Push(2);
+            //stack.Push(3);
+            //stack.Push(4);
+            //stack.Push(5);
 
-            int target;
+            //int target;
 
-            bool flag = false;
+            //bool flag = false;
 
-            do
-            {
+            //do
+            //{
 
-                Console.Write("Enter your target : ");
+            //    Console.Write("Enter your target : ");
 
-                flag = int.TryParse(Console.ReadLine(), out target );
+            //    flag = int.TryParse(Console.ReadLine(), out target );
 
-            }while(!flag);
+            //}while(!flag);
 
 
-            Target(stack, target);
+            //Target(stack, target);
 
             #endregion
 
-            #region MyRegion
+            #region Q9 - Given two arrays, find their intersection. Each element in the result should appear as many times as it shows in both arrays.
+
+            int[] arr01 = { 1, 2, 4, 4, 5 };
+            int[] arr02 = { 0, 4, 4 };
+
+            int[] result = Intersection(arr01, arr02);
+
+            foreach( int i in result ) 
+                Console.WriteLine(i);
 
             #endregion
         }
