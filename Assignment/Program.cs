@@ -318,6 +318,57 @@ namespace Assignment
         }
 
         #endregion
+
+        #region Q11
+
+        public static Queue<int> ReverseElement(Queue<int> queue, int k)
+        {
+
+            if (queue is null || queue.Count == 0)
+                return new Queue<int>();
+
+            Queue<int> subQueue = new Queue<int>();
+            Queue<int> resultQueue = new Queue<int>();
+
+            while ( queue.Count > 0)
+            {
+
+                int top = queue.Dequeue();
+
+                if (top == k)
+                {
+
+                    Stack<int> reverseSubQueue = new Stack<int>();
+
+                    while (subQueue.Count > 0)
+                    {
+                        reverseSubQueue.Push(subQueue.Dequeue());
+                    }
+
+                    while (queue.Count > 0)
+                    {
+                        resultQueue.Enqueue(queue.Dequeue());
+                    } 
+
+                    while (reverseSubQueue.Count > 0)
+                    {
+                        resultQueue.Enqueue(reverseSubQueue.Pop());
+                    }
+
+                    resultQueue.Enqueue(top);
+
+                    return resultQueue;
+                }
+                
+                
+                subQueue.Enqueue(top);
+            }
+
+            return new Queue<int>();
+
+        }
+
+        #endregion
         static void Main(string[] args)
         {
 
@@ -454,12 +505,31 @@ namespace Assignment
 
             #region Q10 - Given an ArrayList of integers and a target sum, find if there is a contiguous sub list that sums up to the target.
 
-            ArrayList list = [1, 2, 3, 7, 5];
+            //ArrayList list = [1, 2, 3, 7, 5];
 
-            ArrayList result = FindContiguousSublist(list, 12);
+            //ArrayList result = FindContiguousSublist(list, 12);
+
+            //foreach (int item in result)
+            //    Console.Write($"{item} ");
+
+            #endregion
+
+            #region Q11 - Given a queue reverse first K elements of a queue, keeping the remaining elements in the same order
+
+            Queue<int> queue = new Queue<int>();
+
+            queue.Enqueue(1);
+            queue.Enqueue(2);
+            queue.Enqueue(3);
+            queue.Enqueue(4);
+            queue.Enqueue(5);
+
+            Queue<int> result = ReverseElement(queue, 3);
 
             foreach (int item in result)
+            {
                 Console.Write($"{item} ");
+            }
 
             #endregion
         }
